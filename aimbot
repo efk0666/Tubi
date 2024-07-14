@@ -16,6 +16,7 @@ local RunService = GetService(game, "RunService")
 local UserInputService = GetService(game, "UserInputService")
 local TweenService = GetService(game, "TweenService")
 local Players = GetService(game, "Players")
+local StarterGui = GetService(game, "StarterGui")
 
 --// Degrade "__index" and "__newindex" functions if the executor doesn't support "getrawmetatable" properly.
 
@@ -211,6 +212,11 @@ local GetClosestPlayer = function()
 
 				if Distance < RequiredDistance and OnScreen then
 					RequiredDistance, Environment.Locked = Distance, Value
+					StarterGui:SetCore("SendNotification", {
+						Title = "Target Locked",
+						Text = "Locked onto " .. __index(Value, "Name"),
+						Duration = 3
+					})
 				end
 			end
 		end
