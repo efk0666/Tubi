@@ -1,9 +1,3 @@
---[[
-
-	Universal Aimbot Module by Exunys © CC0 1.0 Universal (2023 - 2024)
-	https://github.com/Exunys
-
-]]
 
 --// Cache
 
@@ -78,13 +72,13 @@ end
 
 --// Checking for multiple processes
 
-if ExunysDeveloperAimbot then
-	ExunysDeveloperAimbot:Exit()
+if TubiuDeveloperAimbot then
+	TubiuDeveloperAimbot:Exit()
 end
 
 --// Environment
 
-getgenv().ExunysDeveloperAimbot = {
+getgenv().TubiuDeveloperAimbot = {
 	DeveloperSettings = {
 		UpdateMode = "RenderStepped",
 		TeamCheckOption = "TeamColor",
@@ -134,7 +128,7 @@ getgenv().ExunysDeveloperAimbot = {
 	FOVCircleOutline = Drawingnew("Circle")
 }
 
-local Environment = getgenv().ExunysDeveloperAimbot
+local Environment = getgenv().TubiuDeveloperAimbot
 
 SetRenderProperty(Environment.FOVCircle, "Visible", false)
 SetRenderProperty(Environment.FOVCircleOutline, "Visible", false)
@@ -338,8 +332,8 @@ end)
 
 --// Functions
 
-function Environment.Exit(self) -- METHOD | ExunysDeveloperAimbot:Exit(<void>)
-	assert(self, "EXUNYS_AIMBOT-V3.Exit: Missing parameter #1 \"self\" <table>.")
+function Environment.Exit(self) -- METHOD | TubiuDeveloperAimbot:Exit(<void>)
+	assert(self, "Tubiu_AIMBOT-V3.Exit: Missing parameter #1 \"self\" <table>.")
 
 	for Index, _ in next, ServiceConnections do
 		Disconnect(ServiceConnections[Index])
@@ -349,10 +343,10 @@ function Environment.Exit(self) -- METHOD | ExunysDeveloperAimbot:Exit(<void>)
 
 	self.FOVCircle:Remove()
 	self.FOVCircleOutline:Remove()
-	getgenv().ExunysDeveloperAimbot = nil
+	getgenv().TubiuDeveloperAimbot = nil
 end
 
-function Environment.Restart() -- ExunysDeveloperAimbot.Restart(<void>)
+function Environment.Restart() -- TubiuDeveloperAimbot.Restart(<void>)
 	for Index, _ in next, ServiceConnections do
 		Disconnect(ServiceConnections[Index])
 	end
@@ -360,33 +354,33 @@ function Environment.Restart() -- ExunysDeveloperAimbot.Restart(<void>)
 	Load()
 end
 
-function Environment.Blacklist(self, Username) -- METHOD | ExunysDeveloperAimbot:Blacklist(<string> Player Name)
-	assert(self, "EXUNYS_AIMBOT-V3.Blacklist: Missing parameter #1 \"self\" <table>.")
-	assert(Username, "EXUNYS_AIMBOT-V3.Blacklist: Missing parameter #2 \"Username\" <string>.")
+function Environment.Blacklist(self, Username) -- METHOD | TubiuDeveloperAimbot:Blacklist(<string> Player Name)
+	assert(self, "Tubiu_AIMBOT-V3.Blacklist: Missing parameter #1 \"self\" <table>.")
+	assert(Username, "Tubiu_AIMBOT-V3.Blacklist: Missing parameter #2 \"Username\" <string>.")
 
 	Username = FixUsername(Username)
 
-	assert(self, "EXUNYS_AIMBOT-V3.Blacklist: User "..Username.." couldn't be found.")
+	assert(self, "Tubiu_AIMBOT-V3.Blacklist: User "..Username.." couldn't be found.")
 
 	self.Blacklisted[#self.Blacklisted + 1] = Username
 end
 
-function Environment.Whitelist(self, Username) -- METHOD | ExunysDeveloperAimbot:Whitelist(<string> Player Name)
-	assert(self, "EXUNYS_AIMBOT-V3.Whitelist: Missing parameter #1 \"self\" <table>.")
-	assert(Username, "EXUNYS_AIMBOT-V3.Whitelist: Missing parameter #2 \"Username\" <string>.")
+function Environment.Whitelist(self, Username) -- METHOD | TubiuDeveloperAimbot:Whitelist(<string> Player Name)
+	assert(self, "Tubiu_AIMBOT-V3.Whitelist: Missing parameter #1 \"self\" <table>.")
+	assert(Username, "Tubiu_AIMBOT-V3.Whitelist: Missing parameter #2 \"Username\" <string>.")
 
 	Username = FixUsername(Username)
 
-	assert(Username, "EXUNYS_AIMBOT-V3.Whitelist: User "..Username.." couldn't be found.")
+	assert(Username, "Tubiu_AIMBOT-V3.Whitelist: User "..Username.." couldn't be found.")
 
 	local Index = tablefind(self.Blacklisted, Username)
 
-	assert(Index, "EXUNYS_AIMBOT-V3.Whitelist: User "..Username.." is not blacklisted.")
+	assert(Index, "Tubiu_AIMBOT-V3.Whitelist: User "..Username.." is not blacklisted.")
 
 	tableremove(self.Blacklisted, Index)
 end
 
-Environment.Load = Load -- ExunysDeveloperAimbot.Load()
+Environment.Load = Load -- TubiuDeveloperAimbot.Load()
 
 setmetatable(Environment, {__call = Load})
 
