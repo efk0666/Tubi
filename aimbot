@@ -113,7 +113,7 @@ getgenv().ExunysDeveloperAimbot = {
 
 	FOVSettings = {
 		Enabled = true,
-		Visible = false,
+		Visible = true,
 
 		Radius = 90,
 		NumSides = 60,
