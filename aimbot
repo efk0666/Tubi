@@ -1,3 +1,12 @@
+game:GetService("StarterGui"):SetCore("SendNotification",{
+Title = "Aimbot",
+Text = "When you press F the aimbot will work when you hold rightclick.", 
+
+Button1 = "Okay",
+Button2 = "Okay",
+Duration = 3
+})
+
 --// Cache
 
 local game, workspace = game, workspace
@@ -387,13 +396,3 @@ Environment.Load = Load -- TubiuDeveloperAimbot.Load()
 setmetatable(Environment, {__call = Load})
 
 return Environment
-
-
-game:GetService("StarterGui"):SetCore("SendNotification",{
-Title = "Aimbot",
-Text = "When you press F the aimbot will work when you hold rightclick.", 
-
-Button1 = "Okay",
-Button2 = "Okay",
-Duration = 3
-})
