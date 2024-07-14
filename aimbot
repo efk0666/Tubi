@@ -106,7 +106,7 @@ getgenv().TubiuDeveloperAimbot = {
 	},
 
 	FOVSettings = {
-		Enabled = true,
+		Enabled = false,
 		Visible = true,
 
 		Radius = 120,
