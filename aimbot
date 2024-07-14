@@ -214,8 +214,6 @@ local GetClosestPlayer = function()
 				end
 			end
 		end
-	elseif (GetMouseLocation(UserInputService) - ConvertVector(WorldToViewportPoint(Camera, __index(__index(__index(Environment.Locked, "Character"), LockPart), "Position")))).Magnitude > RequiredDistance then
-		CancelLock()
 	end
 end
 
@@ -257,7 +255,9 @@ local Load = function()
 		end
 
 		if Running and Settings.Enabled then
-			GetClosestPlayer()
+			if not Environment.Locked then
+				GetClosestPlayer()
+			end
 
 			Offset = OffsetToMoveDirection and __index(FindFirstChildOfClass(__index(Environment.Locked, "Character"), "Humanoid"), "MoveDirection") * (mathclamp(Settings.OffsetIncrement, 1, 30) / 10) or Vector3zero
 
@@ -301,7 +301,9 @@ local Load = function()
 				end
 			else
 				Running = true
-				GetClosestPlayer()  -- Lock on to a player when the right mouse button is pressed
+				if not Environment.Locked then
+					GetClosestPlayer()
+				end
 			end
 		end
 	end)
